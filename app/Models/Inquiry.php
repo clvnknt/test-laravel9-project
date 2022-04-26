@@ -21,4 +21,10 @@ class Inquiry extends Model
     {
         return $this->belongsTo('App\Models\User', 'assigned_to', 'id');
     }
+
+    public static function getAllInquiries()
+    {
+        // SELECT * FROM inquiries
+        return static::all();
+    }
 }

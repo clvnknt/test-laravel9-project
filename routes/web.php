@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\FriendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/inquiries', [InquiryController::class, 'index']);
+Route::get('/friends', [FriendController::class, 'index']);
+Route::get('/edit-friend/{id}', [FriendController::class, 'showEditForm']);
+Route::post('/save-edit-form', [FriendController::class, 'saveFriendChanges']);
