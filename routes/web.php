@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\FriendController;
+use App\Http\Controllers\OrganizationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/inquiries', [InquiryController::class, 'index']);
 Route::get('/friends', [FriendController::class, 'index']);
 Route::get('/edit-friend/{id}', [FriendController::class, 'showEditForm']);
-Route::post('/save-edit-form', [FriendController::class, 'saveFriendChanges']);
+Route::post('/save-edit-friend', [FriendController::class, 'saveFriendChanges']);
+
+Route::get('/organizations', [OrganizationController::class, 'index']);
+Route::get('/edit-organization/{id}', [OrganizationController::class, 'showEditForm']);
+Route::post('/save-edit-organization', [OrganizationController::class, 'saveOrganizationChanges']);
