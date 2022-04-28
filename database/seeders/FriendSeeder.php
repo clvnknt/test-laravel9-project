@@ -17,7 +17,7 @@ class FriendSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 500; $i++) {
             Friend::create([
                 'complete_name' => $faker->name,
                 'email' => $faker->email,

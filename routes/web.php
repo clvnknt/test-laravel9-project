@@ -27,6 +27,9 @@ Route::get('/inquiries', [InquiryController::class, 'index']);
 Route::get('/friends', [FriendController::class, 'index']);
 Route::get('/edit-friend/{id}', [FriendController::class, 'showEditForm']);
 Route::post('/save-edit-friend', [FriendController::class, 'saveFriendChanges']);
+Route::get('/new-friend-form', [FriendController::class, 'showNewForm']);
+Route::post('/save-new-friend', [FriendController::class, 'saveNewFriend']);
+Route::get('/delete-friend/{id}', [FriendController::class, 'deleteFriend']);
 
 Route::get('/organizations', [OrganizationController::class, 'index']);
 Route::get('/edit-organization/{id}', [OrganizationController::class, 'showEditForm']);
