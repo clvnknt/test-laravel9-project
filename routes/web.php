@@ -34,3 +34,6 @@ Route::get('/delete-friend/{id}', [FriendController::class, 'deleteFriend']);
 Route::get('/organizations', [OrganizationController::class, 'index']);
 Route::get('/edit-organization/{id}', [OrganizationController::class, 'showEditForm']);
 Route::post('/save-edit-organization', [OrganizationController::class, 'saveOrganizationChanges']);
+Route::get('/add-organization-form', [OrganizationController::class, 'showNewForm']);
+Route::post('/save-new-organization', [OrganizationController::class, 'saveNewOrganization']);
+Route::get('/delete-organization/{id}', [OrganizationController::class, 'deleteOrganization']);

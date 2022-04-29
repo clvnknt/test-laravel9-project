@@ -16,7 +16,7 @@ class OrganizationSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create();
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             $type = 'private';
             if ($i % 7 == 0) {
                 $type = 'government';
