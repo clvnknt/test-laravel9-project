@@ -46,4 +46,19 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Inquiry', 'assigned_to', 'id');
     }
+
+    public static function findByEmail($email)
+    {
+        return static::where('email', $email)->first();
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
 }
