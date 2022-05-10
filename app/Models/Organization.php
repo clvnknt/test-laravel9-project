@@ -19,6 +19,19 @@ class Organization extends Model
         'website_url'
     ];
 
+    public function users()
+    {
+        return $this->hasMany(User::class, 'organization_id', 'id');
+    }
+
+    public function getMembersCount()
+    {
+        if (empty($this->users) || is_null($this->users)) {
+            return 0;
+        }
+        return $this->users->count();
+    }
+
     public function getId()
     {
         return $this->id;

@@ -13,8 +13,17 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     ACCESS GRANTED!
+                    <br />
+                    <img src="/images/auf.png" />
+                    <br />
+                    <img src="/images/composer.png" />
                 </div>
             </div>
         </div>

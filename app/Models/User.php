@@ -42,6 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function isAdmin()
+    {
+        return ($this->is_admin == 1);
+    }
+
     public function assignedInquiries()
     {
         return $this->hasMany('App\Models\Inquiry', 'assigned_to', 'id');
@@ -60,5 +65,16 @@ class User extends Authenticatable
     public function getEmail()
     {
         return $this->email;
+    }
+
+    public function setOrganization($organization)
+    {
+        $this->organization_id = $organization->getId();
+        $this->save();
+    }
+
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class, 'organization_id', 'id');
     }
 }

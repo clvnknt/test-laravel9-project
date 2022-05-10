@@ -6,14 +6,30 @@ use Illuminate\Http\Request;
 use App\Models\Organization;
 use Exception;
 use Session;
+use Log;
+use Auth;
 
 class OrganizationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        // SELECT * FROM organizations
-        $organizations = Organization::all();
-        return view('organizations', compact('organizations'));
+        $user = Auth::user();
+
+        if ($user->isAdmin()) {
+            Log::info('listing the organizations');
+            // SELECT * FROM organizations
+            $organizations = Organization::all();
+            return view('organizations', compact('organizations'));
+        } else {
+            Session::flash('error', 'Only administrator users are allowed to open this page');
+        }
+
+        return redirect('/home');
     }
 
     public function showEditForm($id)

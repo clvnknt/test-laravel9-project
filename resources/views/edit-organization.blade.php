@@ -43,6 +43,14 @@
                 <button type="submit" class="btn btn-primary">Save Changes</button>
             </form>
         </div>
+
+        <hr />
+
+        <ol>
+        @foreach ($organization->users as $member)
+            <li>{{ $member->getName() }}</li>
+        @endforeach
+        </ol>
     </div>
 </div>
 @endsection

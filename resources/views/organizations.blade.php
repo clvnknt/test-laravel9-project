@@ -27,6 +27,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Type</th>
+                        <th>Members</th>
                         <th>Contact Number</th>
                         <th></th>
                     </tr>
@@ -37,6 +38,7 @@
                         <td>{{ $org->getId() }}</td>
                         <td>{{ $org->getName() }}</td>
                         <td>{{ $org->getType() }}</td>
+                        <td>{{ $org->getMembersCount() }}</td>
                         <td>{{ $org->getContactNumber() }}</td>
                         <td>
                             <a href="/edit-organization/{{ $org->getId() }}" class="btn btn-primary btn-sm">
