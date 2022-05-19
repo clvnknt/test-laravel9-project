@@ -69,6 +69,7 @@ class User extends Authenticatable
 
     public function setOrganization($organization)
     {
+        // UPDATE users SET organization_id=[ID]
         $this->organization_id = $organization->getId();
         $this->save();
     }

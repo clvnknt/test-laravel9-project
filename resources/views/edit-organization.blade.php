@@ -47,8 +47,8 @@
         <hr />
 
         <ol>
-        @foreach ($organization->users as $member)
-            <li>{{ $member->getName() }}</li>
+        @foreach ($organization->members as $member)
+            <li>{{ $member->getName() }} - {{ $member->getEmail() }} </li>
         @endforeach
         </ol>
     </div>

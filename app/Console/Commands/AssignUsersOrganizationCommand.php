@@ -30,12 +30,15 @@ class AssignUsersOrganizationCommand extends Command
     public function handle()
     {
         // $organizations = Organization::all();
+        // SELECT * FROM users
         $users = User::all();
         foreach ($users as $user) {
-            $random_id = rand(30, 50);
+            $random_id = rand(25, 300);
             $organization = Organization::find($random_id);
-            $user->setOrganization($organization);
-            error_log($user->getName() . ' -> ' . $organization->getName());
+            if (!is_null($organization)) {
+                $user->setOrganization($organization);
+                error_log($user->getName() . ' -> ' . $organization->getName());
+            }
         }
         return 0;
     }

@@ -19,6 +19,11 @@ class Organization extends Model
         'website_url'
     ];
 
+    public function members()
+    {
+        return $this->hasMany(User::class, 'organization_id', 'id');
+    }
+
     public function users()
     {
         return $this->hasMany(User::class, 'organization_id', 'id');

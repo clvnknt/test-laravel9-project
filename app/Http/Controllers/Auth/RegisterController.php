@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserRegistration;
+use Log;
 
 class RegisterController extends Controller
 {
@@ -64,10 +67,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        Log::info('Creating the user');
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        if (!is_null($user)) {
+            Log::info('sending a welcome email');
+            // Send an email notification
+            Mail::to($user)->send(new UserRegistration($user));
+        }
+
+        return $user;
     }
 }
