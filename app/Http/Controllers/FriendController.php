@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Friend;
+use App\Mail\NewFriendRecord;
+use Illuminate\Support\Facades\Mail;
 
 class FriendController extends Controller
 {
@@ -81,6 +83,12 @@ class FriendController extends Controller
         ]);
 
         if (!is_null($friend)) {
+            // Send email notification
+            $user = $request->user();
+            $mailableObject = new NewFriendRecord($friend);
+
+            Mail::to($user)->send($mailableObject);
+
             $request->session()->flash('message', 'New friend record has been added into the database');
         } else {
             $request->session()->flash('error', 'Unable to save new friend record');

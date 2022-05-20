@@ -31,7 +31,7 @@ class UserRegistration extends Mailable
      */
     public function build()
     {
-        return $this->from('ccs06@auf.edu.ph', 'CCS06 Mailer')
+        return $this->from('registration@auf.edu.ph', 'CCS06 Registration Mailer')
             ->view('emails.user-registration')
             ->with([
                 'complete_name' => $this->user->getName()
