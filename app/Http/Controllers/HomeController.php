@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Organization;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = Organization::select(
+                    'type',
+                    DB::raw('COUNT(id) AS type_size')        
+                )
+                ->groupBy('type')
+                ->orderBy('type_size', 'DESC')
+                ->get();
+
+        return view('home', compact('data'));
     }
 }

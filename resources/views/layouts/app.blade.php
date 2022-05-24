@@ -21,6 +21,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+
+@yield('header_content')
 </head>
 <body>
     <div id="app">
@@ -85,5 +87,8 @@
             @yield('content')
         </main>
     </div>
+
+
+@yield('footer_content')
 </body>
 </html>
